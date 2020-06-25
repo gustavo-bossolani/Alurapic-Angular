@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 
+
+const API = 'http://localhost:3000/'
 @Injectable({
   providedIn: 'root'
 })
@@ -13,6 +15,6 @@ export class PhotoService {
   }
 
   listFromUser(userName: string): Observable<Array<Photo>> {
-    return this.http.get<Array<Photo>>(`http://localhost:3000/${userName}/photos`);
+    return this.http.get<Array<Photo>>(`${API}${userName}/photos`);
   }
 }
