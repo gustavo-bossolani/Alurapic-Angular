@@ -1,5 +1,5 @@
 import { Photo } from './photo';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 
@@ -16,5 +16,12 @@ export class PhotoService {
 
   listFromUser(userName: string): Observable<Array<Photo>> {
     return this.http.get<Array<Photo>>(`${API}${userName}/photos`);
+  }
+
+  listFromUserPaginated(userName: string, page: number): Observable<Array<Photo>> {
+    const params = new HttpParams()
+      .append('page', page.toString());
+
+    return this.http.get<Array<Photo>>(`${API}${userName}/photos`, { params });
   }
 }

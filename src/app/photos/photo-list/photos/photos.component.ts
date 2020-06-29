@@ -15,7 +15,6 @@ export class PhotosComponent implements OnInit, OnChanges {
   constructor() { }
 
   ngOnChanges(changes: SimpleChanges): void {
-
     if(changes.photos) this.rows = this.groupColumns(this.photos);
   }
 
