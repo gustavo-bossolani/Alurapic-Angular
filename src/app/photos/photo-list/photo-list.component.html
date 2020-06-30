@@ -1,16 +1,14 @@
-<div class="text-center mt-3 mb-3">
-  <form>
-      <input
-          class="rounded"
-          type="search"
-          placeholder="search..."
-          autofocus
-          (keyup)="debounce.next($event.target.value)">
-  </form>
-</div>
+<!-- Exemplo de uso de variaveis de uma diretiva -->
+<!-- <h1 style="background: #7159c1;" apDarkenOnHover brightness="20%">Photos</h1> -->
 
+<ap-search
+  (onTyping)="filter = $event"
+  [value]="filter">
+</ap-search>
 
-<ap-photos [photos]="photos | filterByDescription: filter"></ap-photos>
+<ap-photos
+  [photos]="photos | filterByDescription: filter">
+</ap-photos>
 
 <ap-load-button
   (click)="load()"
